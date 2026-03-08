@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════
-   VISTARA TECH — Zara-Inspired Premium UI
-   Design System: Editorial Minimalism
+   N FASHIONS — Boutique & Bridal Makeup
+   Design System: Traditional Elegance
    ═══════════════════════════════════════════════════ */
 
 /* ── Reset & Base ─────────────────────────────────── */
@@ -13,16 +13,19 @@
 }
 
 :root {
-    --bg: #0a0a0a;
-    --bg-card: #111111;
-    --bg-elevated: #1a1a1a;
+    --bg: #0a0505;
+    /* Deeper maroon black */
+    --bg-card: #150a0a;
+    --bg-elevated: #1f0f0f;
     --text-primary: #f5f5f0;
-    --text-secondary: #8a8a85;
-    --text-muted: #555550;
+    --text-secondary: #d4bda2;
+    /* Soft gold-tinted secondary */
+    --text-muted: #7a5c5c;
     --accent: #c8a96e;
+    /* Classic Gold */
     --accent-hover: #ddc28e;
-    --border: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.15);
+    --border: rgba(200, 160, 160, 0.08);
+    --border-hover: rgba(200, 169, 110, 0.2);
     --radius-sm: 2px;
     --radius-md: 4px;
     --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1404,5 +1407,104 @@ input {
 
     .product-price {
         font-size: 0.7rem;
+    }
+}
+
+/* ── Shop Footer ──────────────────────────────────── */
+.shop-footer {
+    margin-top: clamp(60px, 10vw, 120px);
+    padding: 60px clamp(20px, 4vw, 60px);
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    animation: fadeInUp 1s ease both;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-brand {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.footer-tagline {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.footer-info {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.info-item svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--accent);
+}
+
+.footer-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.contact-link svg {
+    color: #25D366;
+    /* WhatsApp Green */
+}
+
+.contact-link:hover {
+    border-color: var(--accent);
+    background: var(--bg-card);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .footer-contacts {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-link {
+        width: 100%;
+        justify-content: center;
     }
 }

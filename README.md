@@ -1,21 +1,36 @@
-# Vistara Tech — Premium AR Earring Try-On Experience
+# N FASHIONS — Premium Boutique & Bridal Makeup
 
-Vistara Tech is a state-of-the-art web application that leverages Augmented Reality (AR) to provide users with a premium, virtual earring try-on experience. Designed with a ZARA-inspired editorial aesthetic, the app allows users to explore a curated collection of fine jewelry and see exactly how it looks on them in real-time.
+N FASHIONS is a prestigious boutique and bridal studio located in the heart of Chennai. We specialize in exclusive sarees, boutique collections, and professional bridal makeup services.
+
+This application offers an immersive Augmented Reality (AR) try-on experience, allowing our clients to virtually preview our exclusive jewelry and accessory collections.
 
 ---
 
-## 💎 Core Features
+## 💎 Boutique Features
 
-- **Real-Time AR Try-On**: Powered by MediaPipe Face Mesh, the app accurately detects earlobe landmarks and overlays high-fidelity earring models that follow head movements and rotations.
-- **Curated Collection**: Features an exclusive 5-piece collection of premium earrings, including Jhumkas, Teardrop diamonds, and minimalist Studs.
-- **User Authentication**: A secure registration and login system connected to a **Neon PostgreSQL** database.
-- **Dynamic Product Rendering**: Product details, including Indian Currency (₹) pricing and transparent description overlays, are fetched dynamically from the backend.
-- **Photo Capture & Save**: Users can capture their AR look and save the high-resolution image directly to their device.
-- **Cloud-Powered Assets**: All high-resolution earring assets are served via **Cloudinary CDN** for lightning-fast loading.
+- **Exclusive Boutique Collection**: A curated selection of premium sarees and accessories.
+- **Bridal Makeup Expertise**: Professional bridal studio services featured within the shop profile.
+- **Real-Time AR Try-On**: Powered by MediaPipe Face Mesh, enabling clients to virtually try on earmarks and jewelry.
+- **ZARA-Inspired Editorial Design**: A premium dark-theme UI with deep maroon and gold accents, reflecting our brand's traditional elegance.
+- **Direct Contact**: Integrated WhatsApp links and address for direct shop inquiries.
+
+## 📍 Visit Our Shop
+
+**Address:**
+S4, 19, Vijayalakshmipurram Main Rd,
+Vijayalakshmi Puram, Ambattur,
+Chennai 600053
+
+**Contact:**
+
+- 📞 +91 9840500421
+- 📞 +91 7092202647
+
+---
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: HTML5, Vanilla CSS (Modern Design System), Vanilla JavaScript.
+- **Frontend**: HTML5, Vanilla CSS (Maroon & Gold Design System), Vanilla JavaScript.
 - **AR Engine**: MediaPipe Camera Utils & Face Mesh.
 - **Backend**: Node.js & Express.js (Vercel Serverless Functions).
 - **Database**: Neon PostgreSQL (Serverless Postgres).
@@ -24,57 +39,18 @@ Vistara Tech is a state-of-the-art web application that leverages Augmented Real
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-- Node.js installed on your local machine.
-- A Neon PostgreSQL database instance.
-- A Cloudinary account for asset hosting.
-
-### Installation
-
 1. **Clone the repository:**
 
    ```bash
    git clone https://github.com/virtualrevolution02-commits/009.git
    ```
 
-2. **Install dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-3. **Environment Setup:**
-   Create a `.env` file in the root directory and add your database URL:
-
-   ```env
-   DATABASE_URL=your_postgresql_connection_string
-   ```
-
-4. **Seed the Database:**
-
-   ```bash
-   node scripts/seed_final.js
-   ```
-
-5. **Run Locally:**
+2. **Run Locally:**
 
    ```bash
    node server.js
    ```
 
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 ---
 
-## 🎨 Design Philosophy
-
-The UI is built on a "Jewellery Redefined" philosophy, utilizing:
-
-- **Glassmorphism**: Subtle blurs and semi-transparent layers.
-- **Editorial Typography**: Pairing Playfair Display with Inter for a premium feel.
-- **Dark Mode Aesthetics**: A deep charcoal and gold color palette that emphasizes the jewelry assets.
-
----
-
-*Developed by Vistara Tech Team*
+*© 2024 N FASHIONS - Ambattur, Chennai*
