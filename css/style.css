@@ -1,0 +1,1388 @@
+/* ═══════════════════════════════════════════════════
+   VISTARA TECH — Zara-Inspired Premium UI
+   Design System: Editorial Minimalism
+   ═══════════════════════════════════════════════════ */
+
+/* ── Reset & Base ─────────────────────────────────── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0a0a0a;
+    --bg-card: #111111;
+    --bg-elevated: #1a1a1a;
+    --text-primary: #f5f5f0;
+    --text-secondary: #8a8a85;
+    --text-muted: #555550;
+    --accent: #c8a96e;
+    --accent-hover: #ddc28e;
+    --border: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(255, 255, 255, 0.15);
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-fast: 0.2s ease;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+input {
+    font-family: inherit;
+}
+
+/* ── Typography ───────────────────────────────────── */
+.text-display {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.text-headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.text-label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-secondary);
+}
+
+.text-body {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.text-price {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+}
+
+/* ── Layout Container ─────────────────────────────── */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 60px);
+}
+
+/* ── Screen System ────────────────────────────────── */
+.screen {
+    display: none;
+    min-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════
+   SCREEN 1: LOADING
+   ═══════════════════════════════════════════════════ */
+#loading-screen {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.loading-content {
+    text-align: center;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.loading-brand {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.loading-sub {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 50px;
+}
+
+.loading-bar-track {
+    width: 180px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.loading-bar-fill {
+    height: 100%;
+    width: 0;
+    background: var(--text-primary);
+    transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ═══════════════════════════════════════════════════
+   SCREEN 2: LOGIN
+   ═══════════════════════════════════════════════════ */
+#login-screen {
+    align-items: center;
+    justify-content: center;
+}
+
+.login-wrapper {
+    width: 100%;
+    max-width: 380px;
+    padding: 0 20px;
+}
+
+.login-brand {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.input-group {
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0 12px;
+    transition: border-color var(--transition-fast);
+}
+
+.input-group:focus-within {
+    border-color: var(--text-primary);
+}
+
+.input-group label {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+    pointer-events: none;
+}
+
+.input-group input:focus+label,
+.input-group input:not(:placeholder-shown)+label {
+    top: 4px;
+    font-size: 0.55rem;
+    color: var(--text-secondary);
+}
+
+.input-group input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    padding: 0;
+    letter-spacing: 0.03em;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 16px;
+    margin-top: 40px;
+    background: var(--text-primary);
+    color: var(--bg);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    border: none;
+    transition: all var(--transition);
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.login-footer span {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.login-footer a {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-left: 6px;
+    transition: color var(--transition-fast);
+}
+
+.login-footer a:hover {
+    color: var(--text-primary);
+}
+
+/* ═══════════════════════════════════════════════════
+   SCREEN 3: PRODUCT SELECTION
+   ═══════════════════════════════════════════════════ */
+#products-screen {
+    display: none;
+}
+
+#products-screen.active {
+    display: flex;
+}
+
+/* Navigation */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px clamp(20px, 4vw, 60px);
+    background: rgba(10, 10, 10, 0.85);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.nav-icon:hover {
+    color: var(--text-primary);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    padding: clamp(30px, 5vw, 80px);
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1510 0%, #0d0d0d 50%, #0a0f14 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.hero-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.08;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+}
+
+.hero-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 35px;
+}
+
+.btn-explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--text-muted);
+    transition: all var(--transition);
+}
+
+.btn-explore:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    gap: 18px;
+}
+
+.btn-explore svg {
+    width: 16px;
+    height: 16px;
+    transition: transform var(--transition);
+}
+
+.btn-explore:hover svg {
+    transform: translateX(4px);
+}
+
+/* Product Grid */
+.products-section {
+    padding: clamp(40px, 6vw, 100px) clamp(20px, 4vw, 60px);
+}
+
+.section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.section-count {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+/* Category Filter Bar */
+.category-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+}
+
+.category-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.category-chip {
+    padding: 8px 20px;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+}
+
+.category-chip:hover {
+    color: var(--text-secondary);
+    border-color: var(--border-hover);
+}
+
+.category-chip.active {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: clamp(15px, 2vw, 30px);
+}
+
+/* Product Card */
+.product-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.product-image-wrapper {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--bg-card);
+    margin-bottom: 16px;
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 25px;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Floating bob — makes earrings feel alive */
+    animation: earring-float 4s ease-in-out infinite;
+}
+
+/* Stagger the float so not every card bobs in sync */
+.product-card:nth-child(2n) .product-image-wrapper img {
+    animation-delay: -1s;
+}
+
+.product-card:nth-child(3n) .product-image-wrapper img {
+    animation-delay: -2s;
+}
+
+.product-card:nth-child(4n) .product-image-wrapper img {
+    animation-delay: -0.5s;
+}
+
+.product-card:nth-child(5n) .product-image-wrapper img {
+    animation-delay: -3s;
+}
+
+@keyframes earring-float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-4px) rotate(0.5deg);
+    }
+
+    50% {
+        transform: translateY(-2px) rotate(-0.3deg);
+    }
+
+    75% {
+        transform: translateY(-5px) rotate(0.2deg);
+    }
+}
+
+.product-card:hover .product-image-wrapper img {
+    animation: earring-hover-alive 0.6s ease forwards;
+}
+
+@keyframes earring-hover-alive {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    30% {
+        transform: scale(1.06) rotate(-1deg);
+    }
+
+    60% {
+        transform: scale(1.04) rotate(0.5deg);
+    }
+
+    100% {
+        transform: scale(1.06) rotate(0deg);
+    }
+}
+
+/* ── Continuous Shimmer Sweep ── */
+.product-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(105deg,
+            transparent 30%,
+            rgba(200, 169, 110, 0.06) 45%,
+            rgba(255, 255, 255, 0.08) 50%,
+            rgba(200, 169, 110, 0.06) 55%,
+            transparent 70%);
+    animation: shimmer-sweep 5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.product-card:nth-child(2n) .product-image-wrapper::before {
+    animation-delay: -1.5s;
+}
+
+.product-card:nth-child(3n) .product-image-wrapper::before {
+    animation-delay: -3s;
+}
+
+@keyframes shimmer-sweep {
+
+    0%,
+    100% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        left: 200%;
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0;
+    }
+}
+
+/* ── Golden Glow Pulse on card ── */
+.product-image-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%,
+            rgba(200, 169, 110, 0.06) 0%,
+            transparent 70%);
+    animation: glow-pulse 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes glow-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Try On Button (appears on hover) */
+.product-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition);
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn-tryon {
+    width: 100%;
+    padding: 13px;
+    background: rgba(10, 10, 10, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    border: 1px solid var(--border-hover);
+    transition: all var(--transition-fast);
+}
+
+.btn-tryon:hover {
+    background: var(--text-primary);
+    color: var(--bg);
+    border-color: var(--text-primary);
+}
+
+/* Product Meta */
+.product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.product-name {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.product-price {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    margin-left: 12px;
+}
+
+.product-type {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════════════
+   SCREEN 4: AR CAMERA
+   ═══════════════════════════════════════════════════ */
+#camera-screen {
+    position: relative;
+    background: #000;
+}
+
+#camera-screen.active {
+    display: flex;
+}
+
+.camera-feed {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    overflow: hidden;
+}
+
+/* Beauty Filter Overlay / Vignette */
+.camera-feed::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Soft center light, dark edges to draw focus to face/earrings */
+    background: radial-gradient(circle at center,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(0, 0, 0, 0.15) 50%,
+            rgba(0, 0, 0, 0.7) 100%);
+    pointer-events: none;
+    z-index: 4;
+    /* Below earrings (z-index 5) but above webcam (z-index 1) */
+}
+
+#webcam {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+    /* Mirror the front camera */
+
+    /* Strong Beauty Filter to counteract bad cameras */
+    filter: contrast(1.15) saturate(1.2) brightness(1.05) sepia(0.1);
+    z-index: 1;
+}
+
+#face-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    transform: scaleX(-1);
+    /* Mirror to match video */
+}
+
+/* ═══════════════════════════════════════════════════
+   Floating Product Info Card
+   ═══════════════════════════════════════════════════ */
+.camera-floating-info {
+    position: absolute;
+    bottom: 120px;
+    /* Above the bottom action bar */
+    left: 20px;
+    z-index: 10;
+    pointer-events: none;
+    background: rgba(20, 20, 20, 0.4);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px 20px;
+    border-radius: 12px;
+    color: var(--text-main);
+    max-width: 220px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.camera-floating-info.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.info-content h3 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+    line-height: 1.2;
+}
+
+.info-content p {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.info-content span {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--accent-gold);
+}
+
+/* ═══════════════════════════════════════════════════
+   AR Earring Overlays — LIFE-LIKE EFFECTS
+   ═══════════════════════════════════════════════════ */
+.ar-earring-overlay {
+    position: absolute;
+    pointer-events: none;
+    z-index: 5;
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 8px rgba(200, 169, 110, 0.15));
+    transition: width 0.15s ease, height 0.15s ease;
+    transform-origin: top center;
+    display: none;
+}
+
+.ar-earring-overlay.visible {
+    display: block;
+    animation: earring-appear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes earring-appear {
+    0% {
+        opacity: 0;
+        scale: 0.3;
+        rotate: -15deg;
+    }
+
+    60% {
+        opacity: 1;
+        scale: 1.1;
+        rotate: 3deg;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+        rotate: 0deg;
+    }
+}
+
+/* ── Dangle: Natural pendulum with micro-sway ── */
+.ar-earring-overlay.dangle {
+    animation: earring-appear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+        earring-pendulum 3s cubic-bezier(0.37, 0, 0.63, 1) 0.5s infinite;
+}
+
+@keyframes earring-pendulum {
+    0% {
+        rotate: 0deg;
+        translate: 0 0;
+    }
+
+    15% {
+        rotate: 2.5deg;
+        translate: 0 0.5px;
+    }
+
+    30% {
+        rotate: -1.8deg;
+        translate: 0 -0.3px;
+    }
+
+    45% {
+        rotate: 1.2deg;
+        translate: 0 0.3px;
+    }
+
+    60% {
+        rotate: -0.8deg;
+        translate: 0 -0.2px;
+    }
+
+    75% {
+        rotate: 0.5deg;
+        translate: 0 0.1px;
+    }
+
+    100% {
+        rotate: 0deg;
+        translate: 0 0;
+    }
+}
+
+/* ── Studs / Hoops: Subtle breathing + glint ── */
+.ar-earring-overlay.stud {
+    animation: earring-appear 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+        earring-breathe-live 2.5s ease-in-out 0.5s infinite;
+}
+
+@keyframes earring-breathe-live {
+
+    0%,
+    100% {
+        scale: 1;
+        filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 8px rgba(200, 169, 110, 0.15));
+    }
+
+    50% {
+        scale: 1.03;
+        filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 14px rgba(200, 169, 110, 0.3));
+    }
+}
+
+/* ── Light catch / sparkle effect (pseudo on wrapper) ── */
+.ar-sparkle-layer {
+    position: absolute;
+    pointer-events: none;
+    z-index: 6;
+    overflow: visible;
+}
+
+.ar-sparkle-layer::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    background:
+        radial-gradient(circle 2px at 30% 20%, rgba(255, 255, 255, 0.9) 0%, transparent 100%),
+        radial-gradient(circle 1.5px at 70% 35%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+        radial-gradient(circle 1px at 45% 80%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+        radial-gradient(circle 2px at 80% 70%, rgba(200, 169, 110, 0.8) 0%, transparent 100%);
+    animation: sparkle-twinkle 2s ease-in-out infinite;
+}
+
+.ar-sparkle-layer::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            transparent 20%,
+            rgba(255, 255, 255, 0.1) 45%,
+            rgba(200, 169, 110, 0.08) 50%,
+            rgba(255, 255, 255, 0.1) 55%,
+            transparent 80%);
+    animation: ar-light-sweep 4s ease-in-out infinite;
+}
+
+@keyframes sparkle-twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    50% {
+        opacity: 0.2;
+        transform: scale(0.95);
+    }
+
+    75% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes ar-light-sweep {
+    0% {
+        transform: translateX(-120%) rotate(15deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(120%) rotate(15deg);
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(200%) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+.camera-init-msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    z-index: 3;
+    transition: opacity 0.5s ease;
+}
+
+.camera-init-msg.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* AR Earring Overlays */
+.ar-earring {
+    position: absolute;
+    width: 50px;
+    height: auto;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    animation: earring-swing 2.5s ease-in-out infinite alternate;
+    transform-origin: top center;
+}
+
+.ar-earring.left {
+    left: calc(50% - 155px);
+    top: calc(50% + 20px);
+}
+
+.ar-earring.right {
+    right: calc(50% - 155px);
+    top: calc(50% + 20px);
+    transform: scaleX(-1);
+}
+
+.ar-earring.no-swing {
+    animation: earring-breathe 3s ease-in-out infinite;
+}
+
+@keyframes earring-swing {
+    0% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes earring-breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Shimmer on earring */
+.ar-earring-container {
+    position: absolute;
+}
+
+.ar-earring-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.12) 50%,
+            transparent 70%);
+    animation: jewelry-shine 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes jewelry-shine {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(100%);
+    }
+}
+
+/* Camera UI */
+.camera-top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 25px clamp(20px, 4vw, 40px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.camera-bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px clamp(20px, 4vw, 40px) 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    z-index: 10;
+}
+
+.camera-status {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.camera-actions {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.btn-capture {
+    width: 72px;
+    height: 72px;
+    border: 3px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.btn-capture-inner {
+    width: 56px;
+    height: 56px;
+    background: white;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.btn-capture:hover .btn-capture-inner {
+    transform: scale(0.9);
+}
+
+.btn-capture:active .btn-capture-inner {
+    transform: scale(0.8);
+    background: var(--accent);
+}
+
+.btn-cam-action {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color var(--transition-fast);
+}
+
+.btn-cam-action:hover {
+    color: white;
+}
+
+.btn-cam-action svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ═══════════════════════════════════════════════════
+   SCREEN 5: FINAL PREVIEW
+   ═══════════════════════════════════════════════════ */
+#preview-screen {
+    align-items: center;
+    justify-content: center;
+}
+
+#preview-screen.active {
+    display: flex;
+}
+
+.preview-wrapper {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.preview-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--bg-card);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.preview-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 30px;
+}
+
+.preview-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.preview-product-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.preview-product-price {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 35px;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-buy {
+    flex: 2;
+    padding: 16px;
+    background: var(--text-primary);
+    color: var(--bg);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    border: none;
+    transition: all var(--transition);
+}
+
+.btn-buy:hover {
+    background: var(--accent);
+}
+
+.btn-secondary {
+    flex: 1;
+    padding: 16px;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-primary);
+}
+
+.preview-back {
+    margin-top: 25px;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition-fast);
+}
+
+.preview-back:hover {
+    color: var(--text-primary);
+}
+
+/* ═══════════════════════════════════════════════════
+   UTILITIES & ANIMATIONS
+   ═══════════════════════════════════════════════════ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.stagger-1 {
+    animation-delay: 0.1s;
+}
+
+.stagger-2 {
+    animation-delay: 0.2s;
+}
+
+.stagger-3 {
+    animation-delay: 0.3s;
+}
+
+.stagger-4 {
+    animation-delay: 0.4s;
+}
+
+.stagger-5 {
+    animation-delay: 0.5s;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .hero {
+        height: 55vh;
+    }
+
+    .product-overlay {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .camera-actions {
+        gap: 30px;
+    }
+
+    .preview-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .product-image-wrapper {
+        aspect-ratio: 3/4;
+    }
+
+    .product-name {
+        font-size: 0.7rem;
+    }
+
+    .product-price {
+        font-size: 0.7rem;
+    }
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vistara Tech — AR Earring Try-On</title>
+    <meta name="description"
+        content="Virtually try on premium earrings with Vistara Tech's AR experience. Explore our exclusive collection of fine jewelry.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCREEN 1: LOADING                          -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="loading-screen" class="screen active">
+        <div class="loading-content">
+            <h1 class="loading-brand">Vistara</h1>
+            <p class="loading-sub">Jewellery &middot; Redefined</p>
+            <div class="loading-bar-track">
+                <div class="loading-bar-fill" id="loading-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCREEN 2: LOGIN                            -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="login-screen" class="screen">
+        <div class="login-wrapper">
+            <div class="login-brand">Vistara</div>
+            <form class="login-form" id="login-form">
+                <div class="input-group">
+                    <input type="email" id="login-email" placeholder=" " required autocomplete="email">
+                    <label for="login-email">Email address</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="login-password" placeholder=" " required autocomplete="current-password">
+                    <label for="login-password">Password</label>
+                </div>
+                <button type="submit" class="btn-primary" id="btn-login">Sign In</button>
+            </form>
+            <div class="login-footer">
+                <span>New to Vistara?</span>
+                <a href="#" id="btn-signup">Create Account</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCREEN 3: PRODUCT SELECTION                -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="products-screen" class="screen">
+        <!-- Nav -->
+        <nav class="nav">
+            <div class="nav-brand">Vistara</div>
+            <div class="nav-actions">
+                <button id="btn-nav-search" title="Search collection">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                </button>
+                <button id="btn-nav-wishlist" title="Wishlist">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                    </svg>
+                </button>
+                <button id="btn-nav-bag" title="Shopping bag">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <p class="hero-label">Exclusive Collection</p>
+                <h2 class="hero-title">The Art of<br>Adornment</h2>
+                <p class="hero-desc">Explore our curated selection of fine earrings. Try them on virtually before you
+                    decide.</p>
+                <a href="#collection" class="btn-explore">
+                    Discover Collection
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="products-section" id="collection">
+            <div class="section-header">
+                <h3 class="section-title">Earrings</h3>
+                <span class="section-count">30 pieces</span>
+            </div>
+            <div class="category-bar" id="category-bar">
+                <!-- JS injects category chips -->
+            </div>
+            <div class="product-grid" id="product-grid">
+                <!-- JS will inject product cards here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCREEN 4: AR CAMERA                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="camera-screen" class="screen">
+        <div class="camera-feed" id="camera-feed">
+            <video id="webcam" autoplay playsinline muted></video>
+            <canvas id="face-canvas"></canvas>
+            <!-- Earring image overlays — positioned dynamically by JS -->
+            <img id="earring-left" class="ar-earring-overlay" alt="Left earring">
+            <img id="earring-right" class="ar-earring-overlay" alt="Right earring">
+            <div id="camera-status-msg" class="camera-init-msg">Initializing camera...</div>
+
+            <!-- Floating Product Info Card -->
+            <div class="camera-floating-info" id="camera-floating-info">
+                <div class="info-content">
+                    <h3 id="floating-product-name">Product Name</h3>
+                    <p id="floating-product-desc">Premium handcrafted jewelry.</p>
+                    <span id="floating-product-price">$0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="camera-top-bar">
+            <button class="btn-cam-action" id="btn-camera-close" title="Close camera">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+            </button>
+            <span class="text-label" id="camera-product-label">Imperial Gold Jhumka</span>
+            <button class="btn-cam-action" id="btn-camera-flip" title="Flip camera">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3-3 3" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="camera-bottom-bar">
+            <span class="camera-status" id="detection-status">Detecting face...</span>
+            <div class="camera-actions">
+                <button class="btn-cam-action" id="btn-camera-wishlist" title="Add to wishlist">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                    </svg>
+                </button>
+                <button class="btn-capture" id="btn-capture" title="Capture photo">
+                    <div class="btn-capture-inner"></div>
+                </button>
+                <button class="btn-cam-action" id="btn-camera-buy" title="Buy now">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCREEN 5: FINAL PREVIEW                    -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="preview-screen" class="screen">
+        <div class="preview-wrapper">
+            <div class="preview-image-container" id="preview-image-container">
+                <img src="" alt="AR Try-On Preview" id="preview-image">
+            </div>
+            <p class="preview-label">Your Try-On</p>
+            <h2 class="preview-product-name" id="preview-name">Imperial Gold Jhumka</h2>
+            <p class="preview-product-price" id="preview-price">$1,299</p>
+            <div class="preview-actions">
+                <button class="btn-buy" id="btn-buy" title="Purchase this earring">Add to Bag</button>
+                <button class="btn-secondary" id="btn-save" title="Save image">Save</button>
+            </div>
+            <button class="preview-back" id="btn-preview-back">Continue Browsing</button>
+        </div>
+    </section>
+
+    <!-- MediaPipe Face Mesh CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
