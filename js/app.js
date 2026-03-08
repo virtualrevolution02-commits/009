@@ -635,6 +635,14 @@
             }
         });
 
+        // Draw branding watermark
+        ctx.save();
+        ctx.fillStyle = 'rgba(212, 175, 55, 0.5)'; // Gold with 50% opacity
+        ctx.font = 'italic 12px "Inter", sans-serif';
+        ctx.textAlign = 'right';
+        ctx.fillText('Created by Vistara Tech', feedW - 20, feedH - 20);
+        ctx.restore();
+
         // Convert to data URL and show in preview
         const dataUrl = canvas.toDataURL('image/png');
 
