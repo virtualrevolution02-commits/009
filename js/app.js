@@ -680,8 +680,7 @@
 
         try {
             console.log('Fetching products from Neon PostgreSQL via Express API...');
-            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            const fetchUrl = isLocal ? '/api/products' : 'https://tryonery.vercel.app/api/products';
+            const fetchUrl = '/api/products';
             const res = await fetch(fetchUrl);
             PRODUCTS = await res.json();
             // Ensure schema types map correctly to frontend logic
