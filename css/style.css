@@ -181,7 +181,8 @@ input {
 /* ═══════════════════════════════════════════════════
    SCREEN 2: LOGIN
    ═══════════════════════════════════════════════════ */
-#login-screen {
+#login-screen,
+#register-screen {
     align-items: center;
     justify-content: center;
 }
