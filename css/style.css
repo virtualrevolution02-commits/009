@@ -620,34 +620,7 @@ input {
     }
 }
 
-/* ── Product Description Overlay ── */
-.product-description-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 10, 10, 0.4);
-    backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity var(--transition);
-    pointer-events: none;
-    z-index: 2;
-}
-
-.product-description-overlay p {
-    font-size: 0.75rem;
-    color: var(--text-primary);
-    text-align: center;
-    line-height: 1.5;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-}
-
-.product-card:hover .product-description-overlay {
-    opacity: 1;
-}
+/* Combined Product Overlay Handled Below */
 
 /* Golden Glow Pulse on card ── */
 .product-image-wrapper::after {
@@ -674,44 +647,61 @@ input {
     }
 }
 
-/* Try On Button (appears on hover) */
-.product-overlay {
+/* ── Combined Product Overlay ── */
+.product-card-overlay {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
+    inset: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 100%);
     opacity: 0;
-    transform: translateY(10px);
     transition: all var(--transition);
+    padding: 20px;
+    z-index: 5;
 }
 
-.product-card:hover .product-overlay {
+.product-card:hover .product-card-overlay {
     opacity: 1;
+}
+
+.overlay-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transform: translateY(10px);
+    transition: transform var(--transition);
+}
+
+.product-card:hover .overlay-content {
     transform: translateY(0);
+}
+
+.overlay-description {
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    line-height: 1.5;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    text-align: center;
 }
 
 .btn-tryon {
     width: 100%;
     padding: 13px;
-    background: rgba(10, 10, 10, 0.9);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    color: var(--text-primary);
+    background: var(--text-primary);
+    color: var(--bg);
     font-size: 0.6rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    border: 1px solid var(--border-hover);
+    border: none;
     transition: all var(--transition-fast);
 }
 
 .btn-tryon:hover {
-    background: var(--text-primary);
+    background: var(--accent);
     color: var(--bg);
-    border-color: var(--text-primary);
 }
 
 /* Product Meta */

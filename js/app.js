@@ -199,11 +199,11 @@
         <div class="product-image-wrapper">
           <img src="${p.image}" alt="${p.name}" loading="lazy" 
                style="${p.filter ? 'filter:' + p.filter : ''}">
-          <div class="product-description-overlay">
-            <p>${p.description}</p>
-          </div>
-          <div class="product-overlay">
-            <button class="btn-tryon" data-id="${p.id}" title="Try on ${p.name}">Try On</button>
+          <div class="product-card-overlay">
+            <div class="overlay-content">
+              <p class="overlay-description">${p.description}</p>
+              <button class="btn-tryon" data-id="${p.id}" title="Try on ${p.name}">Try On</button>
+            </div>
           </div>
         </div>
         <div class="product-meta">
