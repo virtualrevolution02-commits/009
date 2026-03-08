@@ -9,43 +9,7 @@
     'use strict';
 
     // ── 30 Gen Z Trending Earring Collection ──────────
-    const PRODUCTS = [
-        { id: 1, name: 'Imperial Gold Jhumka', price: '$1,299', type: 'Traditional Dangle', image: 'assets/images/earring1.png', isDangle: true, scale: 1.0, filter: '' },
-        { id: 2, name: 'Diamond Teardrop Elegance', price: '$2,500', type: 'Drop Earring', image: 'assets/images/earring2.png', isDangle: true, scale: 0.9, filter: 'grayscale(1) brightness(1.5) contrast(1.2)' },
-        { id: 3, name: 'Classic Pearl Studs', price: '$850', type: 'Stud Earring', image: 'assets/images/earring3.png', isDangle: false, scale: 0.8, filter: 'grayscale(1) brightness(1.2)' },
-        { id: 4, name: 'Ruby Oval Dangle', price: '$3,200', type: 'Statement Earring', image: 'assets/images/earring4.png', isDangle: true, scale: 1.1, filter: 'hue-rotate(-50deg) saturate(2) brightness(0.9) drop-shadow(0px 2px 5px rgba(150,0,0,0.5))' },
-        { id: 5, name: 'Silver Hoops minimal', price: '$450', type: 'Hoop Earring', image: 'assets/images/earring5.png', isDangle: false, scale: 1.0, filter: 'grayscale(1) brightness(1.5) contrast(1.2)' },
-
-        { id: 6, name: 'Diamond Solitaire Studs', price: '$1,800', type: 'Diamond Stud', image: 'assets/images/diamond_studs.png', isDangle: false, scale: 0.7, filter: 'brightness(1.2) contrast(1.1)' },
-        { id: 7, name: 'Oversized Gold Hoops', price: '$950', type: 'Oversized Hoop', image: 'assets/images/gold_hoops.png', isDangle: false, scale: 1.5, filter: 'saturate(1.2) brightness(1.1)' },
-        { id: 8, name: 'Rose Gold Heritage Jhumka', price: '$1,450', type: 'Heritage Dangle', image: 'assets/images/earring1.png', isDangle: true, scale: 1.1, filter: 'sepia(0.4) hue-rotate(-30deg) saturate(1.4)' },
-        { id: 9, name: 'Midnight Sapphire Drop', price: '$2,800', type: 'Gemstone Drop', image: 'assets/images/earring2.png', isDangle: true, scale: 1.05, filter: 'hue-rotate(150deg) saturate(1.5) brightness(0.8)' },
-        { id: 10, name: 'Obsidian Black Studs', price: '$650', type: 'Modern Stud', image: 'assets/images/earring3.png', isDangle: false, scale: 0.9, filter: 'grayscale(1) brightness(0.3) contrast(1.5)' },
-
-        { id: 11, name: 'Amethyst Crystal Dangle', price: '$2,900', type: 'Crystal Dangle', image: 'assets/images/earring4.png', isDangle: true, scale: 1.0, filter: 'hue-rotate(220deg) saturate(1.3) brightness(1.1)' },
-        { id: 12, name: 'Rose Gold Huggies', price: '$380', type: 'Huggie Earring', image: 'assets/images/earring5.png', isDangle: false, scale: 0.7, filter: 'sepia(0.5) hue-rotate(-30deg) saturate(1.5)' },
-        { id: 13, name: 'Vintage Emerald Jhumka', price: '$1,650', type: 'Fusion Dangle', image: 'assets/images/earring1.png', isDangle: true, scale: 1.2, filter: 'hue-rotate(80deg) saturate(1.4) brightness(0.8) sepia(0.2)' },
-        { id: 14, name: 'Champagne Diamond Tear', price: '$3,100', type: 'Luxury Drop', image: 'assets/images/earring2.png', isDangle: true, scale: 0.95, filter: 'sepia(0.5) saturate(0.8) brightness(1.2)' },
-        { id: 15, name: 'Pink Tourmaline Studs', price: '$780', type: 'Pastel Stud', image: 'assets/images/earring3.png', isDangle: false, scale: 1.1, filter: 'hue-rotate(290deg) saturate(1.5) brightness(1.1)' },
-
-        { id: 16, name: 'Aquamarine Oval Drop', price: '$1,950', type: 'Statement Drop', image: 'assets/images/earring4.png', isDangle: true, scale: 0.9, filter: 'hue-rotate(180deg) saturate(1.2) brightness(1.3)' },
-        { id: 17, name: 'Matte Black Hoops', price: '$490', type: 'Edgy Hoop', image: 'assets/images/earring5.png', isDangle: false, scale: 1.1, filter: 'grayscale(1) brightness(0.2) contrast(1.2)' },
-        { id: 18, name: 'Platinum Micro Studs', price: '$1,100', type: 'Minimal Stud', image: 'assets/images/diamond_studs.png', isDangle: false, scale: 0.5, filter: 'grayscale(1) brightness(1.6) contrast(1.1)' },
-        { id: 19, name: 'Chunky Bronze Hoops', price: '$720', type: 'Textured Hoop', image: 'assets/images/gold_hoops.png', isDangle: false, scale: 1.3, filter: 'sepia(0.8) hue-rotate(-20deg) saturate(1.2) brightness(0.8)' },
-        { id: 20, name: 'Oxidized Silver Jhumka', price: '$980', type: 'Antique Dangle', image: 'assets/images/earring1.png', isDangle: true, scale: 1.15, filter: 'grayscale(1) brightness(0.7) contrast(1.3)' },
-
-        { id: 21, name: 'Tanzanite Pear Drop', price: '$4,200', type: 'Luxury Dangle', image: 'assets/images/earring2.png', isDangle: true, scale: 1.15, filter: 'hue-rotate(200deg) saturate(1.6) brightness(1.1)' },
-        { id: 22, name: 'Golden Pearl Studs', price: '$920', type: 'Heritage Stud', image: 'assets/images/earring3.png', isDangle: false, scale: 1.2, filter: 'sepia(0.6) hue-rotate(10deg) saturate(1.5) brightness(1.1)' },
-        { id: 23, name: 'Garnet Statement Dangle', price: '$2,750', type: 'Crystal Dangle', image: 'assets/images/earring4.png', isDangle: true, scale: 1.25, filter: 'hue-rotate(330deg) saturate(1.8) brightness(0.7)' },
-        { id: 24, name: 'Textured Silver Hoops', price: '$550', type: 'Textured Hoop', image: 'assets/images/earring5.png', isDangle: false, scale: 1.2, filter: 'grayscale(1) brightness(1.3) contrast(1.5)' },
-        { id: 25, name: 'Luminous Opal Studs', price: '$1,400', type: 'Gemstone Stud', image: 'assets/images/diamond_studs.png', isDangle: false, scale: 0.85, filter: 'hue-rotate(45deg) saturate(0.6) brightness(1.4) contrast(0.9)' },
-
-        { id: 26, name: 'Minimalist Wire Hoops', price: '$320', type: 'Edgy Minimal', image: 'assets/images/gold_hoops.png', isDangle: false, scale: 0.8, filter: 'brightness(1.2) contrast(0.8)' },
-        { id: 27, name: 'Kundan Bridal Jhumka', price: '$5,500', type: 'Bridal Dangle', image: 'assets/images/earring1.png', isDangle: true, scale: 1.3, filter: 'saturate(1.5) brightness(1.1) contrast(1.1)' },
-        { id: 28, name: 'Morganite Teardrop', price: '$2,100', type: 'Pastel Drop', image: 'assets/images/earring2.png', isDangle: true, scale: 1.0, filter: 'sepia(0.3) hue-rotate(320deg) saturate(1.2) brightness(1.15)' },
-        { id: 29, name: 'Turquoise Gem Studs', price: '$680', type: 'Motif Stud', image: 'assets/images/earring3.png', isDangle: false, scale: 1.05, filter: 'hue-rotate(160deg) saturate(2) brightness(1.1)' },
-        { id: 30, name: 'Citrine Oval Drop', price: '$1,850', type: 'Celestial', image: 'assets/images/earring4.png', isDangle: true, scale: 0.95, filter: 'hue-rotate(20deg) saturate(1.8) brightness(1.2)' }
-    ];
+    let PRODUCTS = [];
 
     let currentProduct = null;
     let faceMesh = null;
@@ -615,9 +579,21 @@
     }
 
     // ── Init ──────────────────────────────────────────
-    function init() {
+    async function init() {
         initLoading();
         initLogin();
+        
+        try {
+            console.log('Fetching products from Neon PostgreSQL via Express API...');
+            const res = await fetch('/api/products');
+            PRODUCTS = await res.json();
+            // Ensure schema types map correctly to frontend logic
+            PRODUCTS.forEach(p => p.scale = parseFloat(p.scale));
+            console.log('Successfully loaded', PRODUCTS.length, 'products');
+        } catch (e) {
+            console.error('Failed to load products from API:', e);
+        }
+
         renderCategoryBar();
         renderProducts();
         initCamera();
