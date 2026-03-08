@@ -42,7 +42,7 @@ module.exports = async (req, res) => {
             // Note: In a production app, the password MUST be hashed with bcrypt. 
             // For this implementation, we store it plainly for simplicity and speed.
             const result = await pool.query(
-                'INSERT INTO users (fullName, email, password) VALUES ($1, $2, $3) RETURNING id, fullName, email',
+                'INSERT INTO users (fullname, email, password) VALUES ($1, $2, $3) RETURNING id, fullname, email',
                 [fullName, email, password]
             );
 
@@ -55,7 +55,7 @@ module.exports = async (req, res) => {
             }
 
             // Find user and compare plain text password
-            const result = await pool.query('SELECT id, fullName, email, password FROM users WHERE email = $1', [email]);
+            const result = await pool.query('SELECT id, fullname, email, password FROM users WHERE email = $1', [email]);
 
             if (result.rows.length === 0) {
                 return res.status(401).json({ error: 'Invalid credentials' });
@@ -76,6 +76,11 @@ module.exports = async (req, res) => {
 
     } catch (err) {
         console.error('Auth API Error:', err);
-        return res.status(500).json({ error: 'Internal Server Error processing authentication' });
+        // Provide more descriptive error for debugging (User-safe but helpful)
+        return res.status(500).json({
+            error: 'Internal Server Error processing authentication',
+            details: err.message,
+            code: err.code
+        });
     }
 };

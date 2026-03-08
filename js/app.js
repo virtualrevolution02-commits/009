@@ -46,7 +46,7 @@
         const btnBackLogin = document.getElementById('btn-back-login');
 
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const baseUrl = isLocal ? '' : 'https://tryonery.vercel.app';
+        const baseUrl = ''; // Use relative paths for API calls to support any domain (nfashions, tryonery, etc)
 
         // Switch to Register Screen
         if (btnSignup) {
@@ -89,7 +89,8 @@
                         alert(data.error || 'Login failed.');
                     }
                 } catch (err) {
-                    alert('Server error trying to login.');
+                    console.error('Login Error:', err);
+                    alert('Network or Server error trying to login. Please try again.');
                 }
                 btn.textContent = origText;
             });
@@ -131,7 +132,8 @@
                         statusEl.classList.remove('hidden');
                     }
                 } catch (err) {
-                    statusEl.textContent = 'Server error during registration.';
+                    console.error('Registration Error:', err);
+                    statusEl.textContent = 'Network or Server error during registration. Please check your connection.';
                     statusEl.classList.remove('hidden');
                 }
                 btn.textContent = origText;
