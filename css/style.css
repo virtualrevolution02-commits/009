@@ -620,7 +620,36 @@ input {
     }
 }
 
-/* ── Golden Glow Pulse on card ── */
+/* ── Product Description Overlay ── */
+.product-description-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity var(--transition);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.product-description-overlay p {
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.5;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+}
+
+.product-card:hover .product-description-overlay {
+    opacity: 1;
+}
+
+/* Golden Glow Pulse on card ── */
 .product-image-wrapper::after {
     content: '';
     position: absolute;

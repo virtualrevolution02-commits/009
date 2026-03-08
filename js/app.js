@@ -199,6 +199,9 @@
         <div class="product-image-wrapper">
           <img src="${p.image}" alt="${p.name}" loading="lazy" 
                style="${p.filter ? 'filter:' + p.filter : ''}">
+          <div class="product-description-overlay">
+            <p>${p.description}</p>
+          </div>
           <div class="product-overlay">
             <button class="btn-tryon" data-id="${p.id}" title="Try on ${p.name}">Try On</button>
           </div>
@@ -569,7 +572,7 @@
         const floatCard = document.getElementById('camera-floating-info');
 
         if (floatName) floatName.textContent = currentProduct.name;
-        if (floatDesc) floatDesc.textContent = currentProduct.type + ' | Curated Collection';
+        if (floatDesc) floatDesc.textContent = currentProduct.description || currentProduct.type;
         if (floatPrice) floatPrice.textContent = currentProduct.price;
 
         if (floatCard) {
