@@ -38,13 +38,103 @@
         setTimeout(() => showScreen('login-screen'), 2800);
     }
 
-    // ── Login Screen ──────────────────────────────────
+    // ── Login and Register Screens ────────────────────
     function initLogin() {
-        const form = document.getElementById('login-form');
-        if (form) {
-            form.addEventListener('submit', e => {
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const btnSignup = document.getElementById('btn-signup');
+        const btnBackLogin = document.getElementById('btn-back-login');
+
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const baseUrl = isLocal ? '' : 'https://tryonery.vercel.app';
+
+        // Switch to Register Screen
+        if (btnSignup) {
+            btnSignup.addEventListener('click', (e) => {
                 e.preventDefault();
-                showScreen('products-screen');
+                showScreen('register-screen');
+            });
+        }
+
+        // Switch to Login Screen
+        if (btnBackLogin) {
+            btnBackLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                showScreen('login-screen');
+            });
+        }
+
+        // Handle Login Submission
+        if (loginForm) {
+            loginForm.addEventListener('submit', async e => {
+                e.preventDefault();
+                const btn = document.getElementById('btn-login');
+                const origText = btn.textContent;
+                btn.textContent = 'Signing In...';
+
+                try {
+                    const res = await fetch(`${baseUrl}/api/auth?action=login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            email: document.getElementById('login-email').value,
+                            password: document.getElementById('login-password').value
+                        })
+                    });
+                    const data = await res.json();
+                    if (res.ok) {
+                        localStorage.setItem('user', JSON.stringify(data.user));
+                        showScreen('products-screen');
+                    } else {
+                        alert(data.error || 'Login failed.');
+                    }
+                } catch (err) {
+                    alert('Server error trying to login.');
+                }
+                btn.textContent = origText;
+            });
+        }
+
+        // Handle Registration Submission
+        if (registerForm) {
+            registerForm.addEventListener('submit', async e => {
+                e.preventDefault();
+                const btn = document.getElementById('btn-register-submit');
+                const statusEl = document.getElementById('register-status');
+                const origText = btn.textContent;
+
+                btn.textContent = 'Creating...';
+                statusEl.classList.add('hidden');
+
+                try {
+                    const res = await fetch(`${baseUrl}/api/auth?action=register`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            fullName: document.getElementById('register-name').value,
+                            email: document.getElementById('register-email').value,
+                            password: document.getElementById('register-password').value
+                        })
+                    });
+
+                    const data = await res.json();
+
+                    if (res.ok) {
+                        statusEl.textContent = 'Account created successfully! Logging you in...';
+                        statusEl.classList.remove('hidden');
+                        setTimeout(() => {
+                            localStorage.setItem('user', JSON.stringify(data.user));
+                            showScreen('products-screen');
+                        }, 1500);
+                    } else {
+                        statusEl.textContent = data.error || 'Registration failed.';
+                        statusEl.classList.remove('hidden');
+                    }
+                } catch (err) {
+                    statusEl.textContent = 'Server error during registration.';
+                    statusEl.classList.remove('hidden');
+                }
+                btn.textContent = origText;
             });
         }
     }

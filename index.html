@@ -22,7 +22,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <section id="loading-screen" class="screen active">
         <div class="loading-content">
-            <h1 class="loading-brand">Vistara</h1>
+            <h1 class="loading-brand">Vistara Tech</h1>
             <p class="loading-sub">Jewellery &middot; Redefined</p>
             <div class="loading-bar-track">
                 <div class="loading-bar-fill" id="loading-bar"></div>
@@ -35,7 +35,7 @@
     <!-- ═══════════════════════════════════════════ -->
     <section id="login-screen" class="screen">
         <div class="login-wrapper">
-            <div class="login-brand">Vistara</div>
+            <div class="login-brand">Vistara Tech</div>
             <form class="login-form" id="login-form">
                 <div class="input-group">
                     <input type="email" id="login-email" placeholder=" " required autocomplete="email">
@@ -48,8 +48,39 @@
                 <button type="submit" class="btn-primary" id="btn-login">Sign In</button>
             </form>
             <div class="login-footer">
-                <span>New to Vistara?</span>
+                <span>New to Vistara Tech?</span>
                 <a href="#" id="btn-signup">Create Account</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCREEN 2.5: REGISTER                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="register-screen" class="screen">
+        <div class="login-wrapper">
+            <div class="login-brand">Vistara Tech</div>
+            <form class="login-form" id="register-form">
+                <div class="input-group">
+                    <input type="text" id="register-name" placeholder=" " required autocomplete="name">
+                    <label for="register-name">Full Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="register-email" placeholder=" " required autocomplete="email">
+                    <label for="register-email">Email address</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="register-password" placeholder=" " required autocomplete="new-password">
+                    <label for="register-password">Password</label>
+                </div>
+                <!-- Status specific to registration failures/successes -->
+                <div id="register-status" class="status-msg hidden"
+                    style="color: #e0caaa; font-size: 0.9rem; margin-bottom: 1rem; text-align: center;"></div>
+                <button type="submit" class="btn-primary" id="btn-register-submit">Create Account</button>
+            </form>
+            <div class="login-footer">
+                <span>Already have an account?</span>
+                <a href="#" id="btn-back-login">Sign In</a>
             </div>
         </div>
     </section>
@@ -60,7 +91,7 @@
     <section id="products-screen" class="screen">
         <!-- Nav -->
         <nav class="nav">
-            <div class="nav-brand">Vistara</div>
+            <div class="nav-brand">Vistara Tech</div>
             <div class="nav-actions">
                 <button id="btn-nav-search" title="Search collection">
                     <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
