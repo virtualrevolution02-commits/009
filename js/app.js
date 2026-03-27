@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════
    VISTARA TECH — App Controller
-   Zara-Inspired Premium UI Engine
+   BEAUTYBLIZ by Anu — Premium UI Engine
    30 Gen Z Trending Earring Collection
    + MediaPipe Face Mesh AR Engine
    ═══════════════════════════════════════════════════ */
@@ -48,6 +48,119 @@
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         const baseUrl = ''; // Use relative paths for API calls to support any domain (nfashions, tryonery, etc)
 
+        // ── Runaway Button Messages ──
+        const runawayMessages = [
+            'Fill in the details first! 😄',
+            'Nope! Try filling the fields 😜',
+            'You can\'t catch me! ✌️',
+            'Almost... fill the form first! 🏃',
+            'Nice try! Enter your details 😏',
+            'Haha! I\'m too fast! ⚡',
+            'Fill everything first! 🎯',
+            'Not so fast! 😂',
+        ];
+        let runawayCount = 0;
+
+        // ── Runaway Button Logic ──
+        function setupRunawayButton(form, btn, inputIds) {
+            // Tooltip element
+            const tooltip = document.createElement('div');
+            tooltip.className = 'runaway-tooltip';
+            tooltip.textContent = runawayMessages[0];
+            btn.appendChild(tooltip);
+
+            // Ensure the form allows overflow so button can escape
+            form.style.overflow = 'visible';
+            form.closest('.login-wrapper').style.overflow = 'visible';
+
+            let resetTimeout = null;
+
+            function areFieldsEmpty() {
+                return inputIds.some(id => {
+                    const input = document.getElementById(id);
+                    return !input || input.value.trim() === '';
+                });
+            }
+
+            function getEmptyInputGroups() {
+                return inputIds.filter(id => {
+                    const input = document.getElementById(id);
+                    return !input || input.value.trim() === '';
+                }).map(id => {
+                    const input = document.getElementById(id);
+                    return input ? input.closest('.input-group') : null;
+                }).filter(Boolean);
+            }
+
+            function resetPosition() {
+                btn.style.left = '0px';
+                btn.style.top = '0px';
+                btn.classList.remove('runaway-active');
+                tooltip.classList.remove('visible');
+            }
+
+            function runaway(e) {
+                if (!areFieldsEmpty()) {
+                    resetPosition();
+                    return; // Let the form submit normally
+                }
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                // Shake empty input fields
+                const emptyGroups = getEmptyInputGroups();
+                emptyGroups.forEach(group => {
+                    group.classList.remove('shake');
+                    void group.offsetWidth;
+                    group.classList.add('shake');
+                    setTimeout(() => group.classList.remove('shake'), 600);
+                });
+
+                // Move button freely in all directions
+                const currentLeft = parseFloat(btn.style.left) || 0;
+
+                // Horizontal: dodge opposite direction
+                const dirX = currentLeft >= 0 ? -1 : 1;
+                const randomX = dirX * (50 + Math.random() * 80);
+
+                // Vertical: random up or down within range
+                const randomY = (Math.random() - 0.4) * 100; // slight bias downward
+
+                // Retrigger animation
+                btn.classList.remove('runaway-active');
+                void btn.offsetWidth;
+                btn.classList.add('runaway-active');
+
+                btn.style.left = `${randomX}px`;
+                btn.style.top = `${randomY}px`;
+
+                // Show tooltip
+                tooltip.textContent = runawayMessages[runawayCount % runawayMessages.length];
+                tooltip.classList.add('visible');
+                runawayCount++;
+
+                clearTimeout(resetTimeout);
+                resetTimeout = setTimeout(() => {
+                    tooltip.classList.remove('visible');
+                }, 2000);
+            }
+
+            btn.addEventListener('click', runaway);
+
+            // Reset when all fields are filled
+            inputIds.forEach(id => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', () => {
+                        if (!areFieldsEmpty()) {
+                            resetPosition();
+                        }
+                    });
+                }
+            });
+        }
+
         // Switch to Register Screen
         if (btnSignup) {
             btnSignup.addEventListener('click', (e) => {
@@ -64,11 +177,28 @@
             });
         }
 
+        // Setup runaway effect on both buttons
+        const btnLogin = document.getElementById('btn-login');
+        const btnRegister = document.getElementById('btn-register-submit');
+
+        if (btnLogin) {
+            setupRunawayButton(loginForm, btnLogin, ['login-email', 'login-password']);
+        }
+        if (btnRegister) {
+            setupRunawayButton(registerForm, btnRegister, ['register-name', 'register-email', 'register-password']);
+        }
+
         // Handle Login Submission
         if (loginForm) {
             loginForm.addEventListener('submit', async e => {
                 e.preventDefault();
                 const btn = document.getElementById('btn-login');
+
+                // Double-check fields are filled before submitting
+                const email = document.getElementById('login-email').value.trim();
+                const password = document.getElementById('login-password').value.trim();
+                if (!email || !password) return;
+
                 const origText = btn.textContent;
                 btn.textContent = 'Signing In...';
 
@@ -102,6 +232,13 @@
                 e.preventDefault();
                 const btn = document.getElementById('btn-register-submit');
                 const statusEl = document.getElementById('register-status');
+
+                // Double-check fields are filled before submitting
+                const name = document.getElementById('register-name').value.trim();
+                const email = document.getElementById('register-email').value.trim();
+                const password = document.getElementById('register-password').value.trim();
+                if (!name || !email || !password) return;
+
                 const origText = btn.textContent;
 
                 btn.textContent = 'Creating...';
@@ -225,6 +362,28 @@
                 openCamera(id);
             });
         });
+
+        // Add "+" card at the end for adding new products
+        const addCard = document.createElement('div');
+        addCard.className = 'product-card add-product-card';
+        addCard.style.animation = `fadeInUp 0.5s ease ${0.04 * (filtered.length + 1)}s both`;
+        addCard.innerHTML = `
+            <div class="product-image-wrapper add-product-wrapper">
+                <div class="add-product-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </div>
+            </div>
+            <div class="product-meta">
+                <div>
+                    <div class="product-name" style="color: var(--text-muted)">Add Product</div>
+                    <div class="product-type">Tap to add new</div>
+                </div>
+            </div>
+        `;
+        addCard.addEventListener('click', () => openAddProductModal());
+        grid.appendChild(addCard);
     }
 
     // ═══════════════════════════════════════════════════
@@ -702,6 +861,97 @@
         renderProducts();
         initCamera();
         initPreview();
+        initAddProductModal();
+    }
+
+    // ── Add Product Modal ─────────────────────────────
+    function openAddProductModal() {
+        let modal = document.getElementById('add-product-modal');
+        if (!modal) return;
+        modal.classList.add('active');
+    }
+
+    function closeAddProductModal() {
+        const modal = document.getElementById('add-product-modal');
+        if (modal) modal.classList.remove('active');
+    }
+
+    function initAddProductModal() {
+        // Create modal HTML dynamically
+        const modal = document.createElement('div');
+        modal.id = 'add-product-modal';
+        modal.className = 'add-product-modal';
+        modal.innerHTML = `
+            <div class="add-modal-overlay" id="add-modal-overlay"></div>
+            <div class="add-modal-content">
+                <div class="add-modal-header">
+                    <h3>Add New Product</h3>
+                    <button class="add-modal-close" id="add-modal-close">&times;</button>
+                </div>
+                <form id="add-product-form" class="add-product-form">
+                    <div class="input-group">
+                        <input type="text" id="add-product-name" placeholder=" " required>
+                        <label for="add-product-name">Product Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="add-product-price" placeholder=" " required>
+                        <label for="add-product-price">Price (e.g. ₹1,299)</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="add-product-type" placeholder=" " required>
+                        <label for="add-product-type">Type (e.g. Traditional Dangle)</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="add-product-desc" placeholder=" ">
+                        <label for="add-product-desc">Description</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="add-product-image" placeholder=" ">
+                        <label for="add-product-image">Image URL (optional)</label>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Product</button>
+                </form>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Close handlers
+        document.getElementById('add-modal-close').addEventListener('click', closeAddProductModal);
+        document.getElementById('add-modal-overlay').addEventListener('click', closeAddProductModal);
+
+        // Form submit
+        document.getElementById('add-product-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('add-product-name').value.trim();
+            const price = document.getElementById('add-product-price').value.trim();
+            const type = document.getElementById('add-product-type').value.trim();
+            const desc = document.getElementById('add-product-desc').value.trim();
+            const image = document.getElementById('add-product-image').value.trim();
+
+            if (!name || !price || !type) return;
+
+            const newProduct = {
+                id: PRODUCTS.length > 0 ? Math.max(...PRODUCTS.map(p => p.id)) + 1 : 1,
+                name,
+                price,
+                type,
+                image: image || 'https://res.cloudinary.com/dfen2mxla/image/upload/v1772955703/vistara_earrings/earring1.png',
+                isDangle: type.toLowerCase().includes('dangle') || type.toLowerCase().includes('drop') || type.toLowerCase().includes('jhumka'),
+                scale: 1.0,
+                filter: '',
+                description: desc || name
+            };
+
+            PRODUCTS.push(newProduct);
+            renderProducts();
+            closeAddProductModal();
+
+            // Reset form
+            document.getElementById('add-product-form').reset();
+
+            // Show feedback
+            alert(`✅ "${name}" added to collection!`);
+        });
     }
 
     if (document.readyState === 'loading') {

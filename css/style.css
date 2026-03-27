@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════
-   N FASHIONS — Boutique & Bridal Makeup
+   BEAUTYBLIZ by Anu — Fashion Accessories & Bridal Jewellery
    Design System: Traditional Elegance
    ═══════════════════════════════════════════════════ */
 
@@ -182,18 +182,124 @@ input {
 }
 
 /* ═══════════════════════════════════════════════════
-   SCREEN 2: LOGIN
+   SCREEN 2: LOGIN — Liquid Glass Design
    ═══════════════════════════════════════════════════ */
 #login-screen,
 #register-screen {
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
+/* ── Animated Background Gradient ── */
+#login-screen::before,
+#register-screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(200, 169, 110, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 70%, rgba(160, 120, 80, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(100, 70, 50, 0.06) 0%, transparent 70%);
+    animation: bg-shift 12s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+@keyframes bg-shift {
+    0% { transform: scale(1) translate(0, 0); }
+    33% { transform: scale(1.05) translate(-2%, 3%); }
+    66% { transform: scale(1.02) translate(3%, -2%); }
+    100% { transform: scale(1.08) translate(-1%, 1%); }
+}
+
+/* ── Floating Glass Orbs ── */
+#login-screen::after,
+#register-screen::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 169, 110, 0.08) 0%, transparent 70%);
+    top: -80px;
+    right: -80px;
+    animation: orb-float 8s ease-in-out infinite alternate;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes orb-float {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate(-30px, 40px) scale(1.15); opacity: 1; }
+    100% { transform: translate(20px, -20px) scale(0.95); opacity: 0.5; }
+}
+
+/* ── Liquid Glass Card ── */
 .login-wrapper {
     width: 100%;
-    max-width: 380px;
-    padding: 0 20px;
+    max-width: 400px;
+    padding: 40px 32px 50px;
+    position: relative;
+    z-index: 1;
+    /* Frosted Glass */
+    background: rgba(255, 255, 255, 0.04);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    backdrop-filter: blur(24px) saturate(1.4);
+    /* Luminous Glass Border */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top-color: rgba(255, 255, 255, 0.15);
+    border-left-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    /* Glass Shadow + Inner Light */
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+        0 -1px 30px rgba(200, 169, 110, 0.04) inset;
+    /* Subtle glass refraction */
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.login-wrapper:hover {
+    border-color: rgba(200, 169, 110, 0.15);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+        0 -1px 40px rgba(200, 169, 110, 0.06) inset;
+}
+
+/* Glass Light Streak */
+.login-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.15) 30%, 
+        rgba(200, 169, 110, 0.2) 50%, 
+        rgba(255, 255, 255, 0.15) 70%, 
+        transparent 100%);
+    border-radius: 20px 20px 0 0;
+    z-index: 1;
+}
+
+/* Inner glass reflection */
+.login-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    right: 1px;
+    height: 40%;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.03) 0%, 
+        transparent 100%);
+    border-radius: 19px 19px 0 0;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .login-brand {
@@ -202,24 +308,30 @@ input {
     letter-spacing: 0.15em;
     text-transform: uppercase;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    /* Subtle gold text glow */
+    text-shadow: 0 0 30px rgba(200, 169, 110, 0.15);
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
     gap: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .input-group {
     position: relative;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 18px 0 12px;
     transition: border-color var(--transition-fast);
 }
 
 .input-group:focus-within {
-    border-color: var(--text-primary);
+    border-color: rgba(200, 169, 110, 0.4);
 }
 
 .input-group label {
@@ -238,7 +350,7 @@ input {
 .input-group input:not(:placeholder-shown)+label {
     top: 4px;
     font-size: 0.55rem;
-    color: var(--text-secondary);
+    color: var(--accent);
 }
 
 .input-group input {
@@ -255,25 +367,105 @@ input {
 .btn-primary {
     width: 100%;
     padding: 16px;
-    margin-top: 40px;
-    background: var(--text-primary);
+    margin-top: 35px;
+    background: rgba(245, 245, 240, 0.95);
     color: var(--bg);
     font-size: 0.65rem;
     font-weight: 600;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     border: none;
+    border-radius: 50px;
     transition: all var(--transition);
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    /* Glass button glow */
+    box-shadow: 0 4px 15px rgba(200, 169, 110, 0.15);
 }
 
 .btn-primary:hover {
     background: var(--accent);
     color: var(--bg);
+    box-shadow: 0 6px 25px rgba(200, 169, 110, 0.3);
+    transform: translateY(-1px);
+}
+
+/* ── Runaway Button Effect (button only) ── */
+.btn-primary.runaway-active {
+    transition: left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                top 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: btn-dodge 0.4s ease;
+}
+
+@keyframes btn-dodge {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    15% { transform: rotate(-6deg) scale(0.95); }
+    30% { transform: rotate(5deg) scale(1.03); }
+    50% { transform: rotate(-3deg); }
+    70% { transform: rotate(2deg); }
+    85% { transform: rotate(-1deg); }
+}
+
+/* Floating tooltip "Fill in the details!" */
+.runaway-tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 8px 16px;
+    border-radius: 50px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 20;
+}
+
+.runaway-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--accent);
+}
+
+.runaway-tooltip.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Input shake when fields are empty */
+.input-group.shake {
+    animation: input-shake 0.5s ease;
+}
+
+.input-group.shake {
+    border-color: rgba(200, 169, 110, 0.5) !important;
+}
+
+@keyframes input-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
 }
 
 .login-footer {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 25px;
+    position: relative;
+    z-index: 1;
 }
 
 .login-footer span {
@@ -283,7 +475,7 @@ input {
 
 .login-footer a {
     font-size: 0.7rem;
-    color: var(--text-secondary);
+    color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 3px;
     margin-left: 6px;
@@ -1538,4 +1730,158 @@ input {
         right: 15px;
         font-size: 0.5rem;
     }
+}
+
+/* ═══════════════════════════════════════════════════
+   ADD PRODUCT CARD (+)
+   ═══════════════════════════════════════════════════ */
+.add-product-card {
+    cursor: pointer;
+}
+
+.add-product-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(200, 169, 110, 0.2);
+    background: rgba(255, 255, 255, 0.02);
+    transition: all var(--transition);
+}
+
+.add-product-wrapper:hover {
+    border-color: rgba(200, 169, 110, 0.5);
+    background: rgba(200, 169, 110, 0.05);
+}
+
+.add-product-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(200, 169, 110, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+}
+
+.add-product-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--accent);
+    transition: transform var(--transition);
+}
+
+.add-product-card:hover .add-product-icon {
+    border-color: var(--accent);
+    background: rgba(200, 169, 110, 0.1);
+    box-shadow: 0 0 20px rgba(200, 169, 110, 0.15);
+    transform: scale(1.1);
+}
+
+.add-product-card:hover .add-product-icon svg {
+    transform: rotate(90deg);
+}
+
+/* ═══════════════════════════════════════════════════
+   ADD PRODUCT MODAL
+   ═══════════════════════════════════════════════════ */
+.add-product-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-product-modal.active {
+    display: flex;
+}
+
+.add-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease;
+}
+
+.add-modal-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    margin: 20px;
+    padding: 36px 32px 40px;
+    background: rgba(255, 255, 255, 0.04);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top-color: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+        0 -1px 30px rgba(200, 169, 110, 0.04) inset;
+    animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.add-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.add-modal-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+}
+
+.add-modal-close {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.add-modal-close:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.add-product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.add-product-form .btn-primary {
+    margin-top: 25px;
 }
